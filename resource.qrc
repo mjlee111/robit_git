@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>resources/logo.jpeg</file>
+        <file>resources/rogit.png</file>
+        <file>resources/refresh.png</file>
+    </qresource>
+</RCC>
