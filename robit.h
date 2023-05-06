@@ -10,10 +10,14 @@
 #include <QStringList>
 #include <QVector>
 #include <QTreeWidgetItem>
+#include <QFileDialog>
 
 #include <libssh/libssh.h>
 #include <libssh/sftp.h>
 #include <sys/stat.h>
+#include <string>
+#include <fcntl.h>
+#include <unistd.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -29,9 +33,13 @@ public:
     explicit robit(QWidget *parent = 0);
     ~robit();
 
+    bool if_connected = false;
+
     void ui_init();
     void ssh_connection();
+    bool request_login();
     void read_files();
+    void cloneRemoteFolder(sftp_session sftp, const char* remote_path, const char* local_path);
 
     QString default_path;
 
@@ -42,6 +50,8 @@ private slots:
     void on_login_btn_clicked();
 
     void on_refresh_clicked();
+
+    void on_clone_btn_clicked();
 
 private:
     Ui::robit *ui;
