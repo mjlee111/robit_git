@@ -44,7 +44,7 @@ public:
     void read_files();
     void read_files_recursively(QTreeWidgetItem* rootItem, const QString& directory_path, sftp_session my_sftp_session);
     bool deleteRemoteFolder(sftp_session sftp, const char *dir_path);
-    void highlight(QByteArray data);
+//    void highlight(QByteArray data);
 
     //void cloneRemoteFolder(sftp_session sftp, const char* remote_path, const char* local_path);
 

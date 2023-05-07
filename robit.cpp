@@ -279,79 +279,79 @@ void robit::on_delete_btn_clicked(){
     return;
 }
 
-void robit::highlight(QByteArray data) {
-    QTextCharFormat keyFormat;
-    keyFormat.setForeground(QColor(230, 57, 70)); // Red
+//void robit::highlight(QByteArray data) {
+//    QTextCharFormat keyFormat;
+//    keyFormat.setForeground(QColor(230, 57, 70)); // Red
 
-    QTextCharFormat valueFormat;
-    valueFormat.setForeground(QColor(69, 161, 250)); // Blue
+//    QTextCharFormat valueFormat;
+//    valueFormat.setForeground(QColor(69, 161, 250)); // Blue
 
-    QTextCharFormat stringFormat;
-    stringFormat.setForeground(QColor(255, 204, 102)); // Yellow
-    stringFormat.setFontWeight(QFont::Bold);
+//    QTextCharFormat stringFormat;
+//    stringFormat.setForeground(QColor(255, 204, 102)); // Yellow
+//    stringFormat.setFontWeight(QFont::Bold);
 
-    QTextCharFormat numberFormat;
-    numberFormat.setForeground(QColor(102, 204, 255)); // Cyan
+//    QTextCharFormat numberFormat;
+//    numberFormat.setForeground(QColor(102, 204, 255)); // Cyan
 
-    QTextCharFormat boolFormat;
-    boolFormat.setForeground(QColor(255, 153, 204)); // Pink
+//    QTextCharFormat boolFormat;
+//    boolFormat.setForeground(QColor(255, 153, 204)); // Pink
 
-    QTextCharFormat nullFormat;
-    nullFormat.setForeground(QColor(179, 179, 179)); // Gray
+//    QTextCharFormat nullFormat;
+//    nullFormat.setForeground(QColor(179, 179, 179)); // Gray
 
-    QRegularExpression keyRegex("\"(\\w+)\":");
-    QRegularExpression valueRegex(":\\s*(\".*?\"|null|true|false|\\d+\\.?\\d*)");
+//    QRegularExpression keyRegex("\"(\\w+)\":");
+//    QRegularExpression valueRegex(":\\s*(\".*?\"|null|true|false|\\d+\\.?\\d*)");
 
-    QTextDocument document;
-    document.setPlainText(QString::fromUtf8(data));
+//    QTextDocument document;
+//    document.setPlainText(QString::fromUtf8(data));
 
-    QTextCursor cursor(&document);
-    cursor.beginEditBlock();
+//    QTextCursor cursor(&document);
+//    cursor.beginEditBlock();
 
-    while (!cursor.atEnd()) {
-        cursor.movePosition(QTextCursor::StartOfBlock);
+//    while (!cursor.atEnd()) {
+//        cursor.movePosition(QTextCursor::StartOfBlock);
 
-        // Highlight keys
-        while (keyRegex.match(cursor.block().text()).hasMatch()) {
-            QRegularExpressionMatch match = keyRegex.match(cursor.block().text());
-            cursor.movePosition(QTextCursor::StartOfBlock);
-            cursor.movePosition(QTextCursor::Right, QTextCursor::MoveAnchor, match.capturedStart(1));
-            cursor.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor, match.capturedLength(1));
-            cursor.setCharFormat(keyFormat);
-        }
+//        // Highlight keys
+//        while (keyRegex.match(cursor.block().text()).hasMatch()) {
+//            QRegularExpressionMatch match = keyRegex.match(cursor.block().text());
+//            cursor.movePosition(QTextCursor::StartOfBlock);
+//            cursor.movePosition(QTextCursor::Right, QTextCursor::MoveAnchor, match.capturedStart(1));
+//            cursor.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor, match.capturedLength(1));
+//            cursor.setCharFormat(keyFormat);
+//        }
 
-        // Highlight values
-        while (valueRegex.match(cursor.block().text()).hasMatch()) {
-            QRegularExpressionMatch match = valueRegex.match(cursor.block().text());
-            cursor.movePosition(QTextCursor::StartOfBlock);
-            cursor.movePosition(QTextCursor::Right, QTextCursor::MoveAnchor, match.capturedStart(1));
-            cursor.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor, match.capturedLength(1));
+//        // Highlight values
+//        while (valueRegex.match(cursor.block().text()).hasMatch()) {
+//            QRegularExpressionMatch match = valueRegex.match(cursor.block().text());
+//            cursor.movePosition(QTextCursor::StartOfBlock);
+//            cursor.movePosition(QTextCursor::Right, QTextCursor::MoveAnchor, match.capturedStart(1));
+//            cursor.movePosition(QTextCursor::Right, QTextCursor::KeepAnchor, match.capturedLength(1));
 
-            QString value = match.captured(1);
-            if (value.startsWith("\"") && value.endsWith("\"")) {
-                // Highlight strings
-                cursor.setCharFormat(stringFormat);
-            }
-            else if (value == "null") {
-                // Highlight null
-                cursor.setCharFormat(nullFormat);
-            }
-            else if (value == "true" || value == "false") {
-                // Highlight booleans
-                cursor.setCharFormat(boolFormat);
-            }
-            else {
-                // Highlight numbers
-                cursor.setCharFormat(numberFormat);
-            }
-        }
-    }
+//            QString value = match.captured(1);
+//            if (value.startsWith("\"") && value.endsWith("\"")) {
+//                // Highlight strings
+//                cursor.setCharFormat(stringFormat);
+//            }
+//            else if (value == "null") {
+//                // Highlight null
+//                cursor.setCharFormat(nullFormat);
+//            }
+//            else if (value == "true" || value == "false") {
+//                // Highlight booleans
+//                cursor.setCharFormat(boolFormat);
+//            }
+//            else {
+//                // Highlight numbers
+//                cursor.setCharFormat(numberFormat);
+//            }
+//        }
+//    }
 
-    cursor.endEditBlock();
-    QString highlightedData = document.toPlainText();
-    // do something with the highlighted data
-    ui->textBrowser->setText(highlightedData);
-}
+//    cursor.endEditBlock();
+//    QString highlightedData = document.toPlainText();
+//    // do something with the highlighted data
+//    ui->textBrowser->setText(highlightedData);
+//}
 
 
 void robit::on_file_tree_itemDoubleClicked(QTreeWidgetItem *item){
