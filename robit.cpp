@@ -167,7 +167,7 @@ void robit::read_files(){
     read_files_recursively(rootItem, directory_path, my_sftp_session);
 
     rootItem->setExpanded(true);
-    ui->file_tree->expandAll();
+    //ui->file_tree->expandAll();
 
     sftp_free(my_sftp_session);
     ssh_disconnect(my_ssh_session);
