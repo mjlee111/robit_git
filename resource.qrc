@@ -3,5 +3,6 @@
         <file>resources/logo.jpeg</file>
         <file>resources/rogit.png</file>
         <file>resources/refresh.png</file>
+        <file>resources/delet.png</file>
     </qresource>
 </RCC>

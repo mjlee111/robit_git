@@ -11,6 +11,8 @@
 #include <QVector>
 #include <QTreeWidgetItem>
 #include <QFileDialog>
+#include <QVBoxLayout>
+#include <QFormLayout>
 
 #include <libssh/libssh.h>
 #include <libssh/sftp.h>
@@ -39,7 +41,10 @@ public:
     void ssh_connection();
     bool request_login();
     void read_files();
-    void cloneRemoteFolder(sftp_session sftp, const char* remote_path, const char* local_path);
+    void read_files_recursively(QTreeWidgetItem* rootItem, const QString& directory_path, sftp_session my_sftp_session);
+    bool deleteRemoteFolder(sftp_session sftp, const char *dir_path);
+
+    //void cloneRemoteFolder(sftp_session sftp, const char* remote_path, const char* local_path);
 
     QString default_path;
 
@@ -51,7 +56,11 @@ private slots:
 
     void on_refresh_clicked();
 
-    void on_clone_btn_clicked();
+   // void on_clone_btn_clicked();
+
+    void on_delete_btn_clicked();
+
+    void on_file_tree_itemDoubleClicked(QTreeWidgetItem *item);
 
 private:
     Ui::robit *ui;
